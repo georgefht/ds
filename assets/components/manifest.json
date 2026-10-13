@@ -1,0 +1,541 @@
+[
+  {
+    "file": "60402.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "71dfc.svg",
+    "width": 14.0,
+    "height": 14.0,
+    "bytes": 332,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "b826a.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "c340a.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "48d6f.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "0a7b1.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "6fc14.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "3d94a.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "cec8d.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "10fae.svg",
+    "width": 14.0,
+    "height": 14.0,
+    "bytes": 332,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "966a5.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "52d98.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "228aa.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "519e5.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "1e25b.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "5685a.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 264,
+    "source": "status-round-all-context"
+  },
+  {
+    "file": "5b569.svg",
+    "width": 16.0,
+    "height": 16.0,
+    "bytes": 1326,
+    "source": "counter-all-context"
+  },
+  {
+    "file": "be8b5.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 523,
+    "source": "segment-control-context"
+  },
+  {
+    "file": "4fc0d.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 523,
+    "source": "segment-control-context"
+  },
+  {
+    "file": "d9baa.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 523,
+    "source": "segment-control-context"
+  },
+  {
+    "file": "698a1.svg",
+    "width": 12.0,
+    "height": 12.0,
+    "bytes": 480,
+    "source": "tooltip-context"
+  },
+  {
+    "file": "21a3c.svg",
+    "width": 12.0,
+    "height": 12.0,
+    "bytes": 480,
+    "source": "tooltip-context"
+  },
+  {
+    "file": "f2122.svg",
+    "width": 12.0,
+    "height": 12.0,
+    "bytes": 480,
+    "source": "tooltip-context"
+  },
+  {
+    "file": "aad04.svg",
+    "width": 12.0,
+    "height": 12.0,
+    "bytes": 471,
+    "source": "tooltip-context"
+  },
+  {
+    "file": "d1159.svg",
+    "width": 12.0,
+    "height": 12.0,
+    "bytes": 471,
+    "source": "tooltip-context"
+  },
+  {
+    "file": "6e237.svg",
+    "width": 12.0,
+    "height": 12.0,
+    "bytes": 471,
+    "source": "tooltip-context"
+  },
+  {
+    "file": "339a0.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 585,
+    "source": "badge-context"
+  },
+  {
+    "file": "d9e81.svg",
+    "width": 18.0,
+    "height": 18.0,
+    "bytes": 333,
+    "source": "badge-context"
+  },
+  {
+    "file": "85904.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 523,
+    "source": "tabs-context"
+  },
+  {
+    "file": "ca67d.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 523,
+    "source": "tabs-context"
+  },
+  {
+    "file": "9276d.svg",
+    "width": 185.0,
+    "height": 2.0,
+    "bytes": 321,
+    "source": "tabs-context"
+  },
+  {
+    "file": "93fe4.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 523,
+    "source": "tabs-context"
+  },
+  {
+    "file": "c76b8.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 523,
+    "source": "tabs-context"
+  },
+  {
+    "file": "50685.svg",
+    "width": 185.0,
+    "height": 2.0,
+    "bytes": 321,
+    "source": "tabs-context"
+  },
+  {
+    "file": "fc0ef.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 523,
+    "source": "tabs-context"
+  },
+  {
+    "file": "44cc2.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 523,
+    "source": "tabs-context"
+  },
+  {
+    "file": "693cb.svg",
+    "width": 185.0,
+    "height": 2.0,
+    "bytes": 413,
+    "source": "tabs-context"
+  },
+  {
+    "file": "8311a.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 523,
+    "source": "tabs-context"
+  },
+  {
+    "file": "a52a8.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 523,
+    "source": "tabs-context"
+  },
+  {
+    "file": "0b870.svg",
+    "width": 185.0,
+    "height": 2.0,
+    "bytes": 321,
+    "source": "tabs-context"
+  },
+  {
+    "file": "2df09.svg",
+    "width": 29.0,
+    "height": 18.0,
+    "bytes": 1033,
+    "source": "toggle-context"
+  },
+  {
+    "file": "0d0b8.svg",
+    "width": 29.0,
+    "height": 18.0,
+    "bytes": 1035,
+    "source": "toggle-context"
+  },
+  {
+    "file": "da5bc.svg",
+    "width": 29.0,
+    "height": 18.0,
+    "bytes": 1033,
+    "source": "toggle-context"
+  },
+  {
+    "file": "1ddcd.svg",
+    "width": 29.0,
+    "height": 18.0,
+    "bytes": 1033,
+    "source": "toggle-context"
+  },
+  {
+    "file": "95dd3.svg",
+    "width": 29.0,
+    "height": 18.0,
+    "bytes": 1031,
+    "source": "toggle-context"
+  },
+  {
+    "file": "3a64c.svg",
+    "width": 29.0,
+    "height": 18.0,
+    "bytes": 1029,
+    "source": "toggle-context"
+  },
+  {
+    "file": "4b605.svg",
+    "width": 29.0,
+    "height": 18.0,
+    "bytes": 1031,
+    "source": "toggle-context"
+  },
+  {
+    "file": "76d10.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 484,
+    "source": "segment-unit-context"
+  },
+  {
+    "file": "fff27.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 523,
+    "source": "segment-unit-context"
+  },
+  {
+    "file": "c0785.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 484,
+    "source": "segment-unit-context"
+  },
+  {
+    "file": "2cdd2.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 484,
+    "source": "segment-unit-context"
+  },
+  {
+    "file": "30dba.svg",
+    "width": 22.0,
+    "height": 22.0,
+    "bytes": 484,
+    "source": "segment-unit-context"
+  },
+  {
+    "file": "0749e.svg",
+    "width": 593.0,
+    "height": 1.0,
+    "bytes": 323,
+    "source": "collapse-section-context"
+  },
+  {
+    "file": "7258e.svg",
+    "width": 24.0,
+    "height": 24.0,
+    "bytes": 321,
+    "source": "collapse-section-context"
+  },
+  {
+    "file": "d7375.svg",
+    "width": 24.0,
+    "height": 24.0,
+    "bytes": 321,
+    "source": "collapse-section-context"
+  },
+  {
+    "file": "5140b.svg",
+    "width": 16.0,
+    "height": 16.0,
+    "bytes": 325,
+    "source": "checkbox-context"
+  },
+  {
+    "file": "146c1.svg",
+    "width": 16.0,
+    "height": 16.0,
+    "bytes": 313,
+    "source": "checkbox-context"
+  },
+  {
+    "file": "4f516.svg",
+    "width": 20.0,
+    "height": 20.0,
+    "bytes": 774,
+    "source": "checkbox-context"
+  },
+  {
+    "file": "8d540.svg",
+    "width": 20.0,
+    "height": 20.0,
+    "bytes": 776,
+    "source": "checkbox-context"
+  },
+  {
+    "file": "6739b.svg",
+    "width": 20.0,
+    "height": 20.0,
+    "bytes": 776,
+    "source": "checkbox-context"
+  },
+  {
+    "file": "ee95a.svg",
+    "width": 16.0,
+    "height": 16.0,
+    "bytes": 325,
+    "source": "checkbox-context"
+  },
+  {
+    "file": "710da.svg",
+    "width": 16.0,
+    "height": 16.0,
+    "bytes": 325,
+    "source": "checkbox-context"
+  },
+  {
+    "file": "cc92e.svg",
+    "width": 24.0,
+    "height": 24.0,
+    "bytes": 321,
+    "source": "collapse-string-all-context"
+  },
+  {
+    "file": "35f89.svg",
+    "width": 24.0,
+    "height": 24.0,
+    "bytes": 321,
+    "source": "collapse-string-all-context"
+  },
+  {
+    "file": "fbf7f.svg",
+    "width": 20.0,
+    "height": 20.0,
+    "bytes": 327,
+    "source": "collapse-string-all-context"
+  },
+  {
+    "file": "3f670.svg",
+    "width": 20.0,
+    "height": 20.0,
+    "bytes": 327,
+    "source": "collapse-string-all-context"
+  },
+  {
+    "file": "12dd7.svg",
+    "width": 14.0,
+    "height": 14.0,
+    "bytes": 332,
+    "source": "status-text-all-context"
+  },
+  {
+    "file": "collapse-right-24.svg",
+    "width": 24.0,
+    "height": 24.0,
+    "bytes": 214,
+    "source": "Figma NewCollapseString, unmodified SVG export"
+  },
+  {
+    "file": "collapse-right-20.svg",
+    "width": 20.0,
+    "height": 20.0,
+    "bytes": 220,
+    "source": "Figma NewCollapseString, unmodified SVG export"
+  },
+  {
+    "file": "collapse-right-hover-20.svg",
+    "width": 20.0,
+    "height": 20.0,
+    "bytes": 220,
+    "source": "Figma NewCollapseString, unmodified SVG export"
+  },
+  {
+    "file": "collapse-right-hover-24.svg",
+    "width": 24.0,
+    "height": 24.0,
+    "bytes": 214,
+    "source": "Figma NewCollapseString, unmodified SVG export"
+  },
+  {
+    "file": "d4274.svg",
+    "width": 24.0,
+    "height": 24.0,
+    "bytes": 321,
+    "source": "https://www.figma.com/api/mcp/asset/6c4f16a5-a14c-4527-a973-928028dc17b8/d4274.svg"
+  },
+  {
+    "file": "77356.svg",
+    "width": 24.0,
+    "height": 24.0,
+    "bytes": 321,
+    "source": "https://www.figma.com/api/mcp/asset/6c4f16a5-a14c-4527-a973-928028dc17b8/77356.svg"
+  },
+  {
+    "file": "8eec5.svg",
+    "width": 20.0,
+    "height": 20.0,
+    "bytes": 327,
+    "source": "https://www.figma.com/api/mcp/asset/6c4f16a5-a14c-4527-a973-928028dc17b8/8eec5.svg"
+  },
+  {
+    "file": "ee6f6.svg",
+    "width": 20.0,
+    "height": 20.0,
+    "bytes": 327,
+    "source": "https://www.figma.com/api/mcp/asset/6c4f16a5-a14c-4527-a973-928028dc17b8/ee6f6.svg"
+  },
+  {
+    "file": "90769.svg",
+    "width": 20.0,
+    "height": 20.0,
+    "bytes": 327,
+    "source": "https://www.figma.com/api/mcp/asset/6c4f16a5-a14c-4527-a973-928028dc17b8/90769.svg"
+  },
+  {
+    "file": "b4f0c.svg",
+    "width": 20.0,
+    "height": 20.0,
+    "bytes": 327,
+    "source": "https://www.figma.com/api/mcp/asset/6c4f16a5-a14c-4527-a973-928028dc17b8/b4f0c.svg"
+  }
+]

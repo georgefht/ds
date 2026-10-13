@@ -1,0 +1,94 @@
+/* Original Figma typography, Spacing variables and effect styles. */
+:root {
+  --ds-type-h0-headline: 600 22px/24px Inter, sans-serif;
+  --ds-type-h0-headline-size: 22px;
+  --ds-type-h0-headline-line-height: 24px;
+  --ds-type-h0-headline-weight: 600;
+  --ds-type-h0-headline-tracking: 0.2px;
+  --ds-type-h0-headline-paragraph-spacing: 8px;
+  --ds-type-h1-headline: 600 18px/20px Inter, sans-serif;
+  --ds-type-h1-headline-size: 18px;
+  --ds-type-h1-headline-line-height: 20px;
+  --ds-type-h1-headline-weight: 600;
+  --ds-type-h1-headline-tracking: 0.2px;
+  --ds-type-h1-headline-paragraph-spacing: 8px;
+  --ds-type-h2-headline: 600 16px/16px Inter, sans-serif;
+  --ds-type-h2-headline-size: 16px;
+  --ds-type-h2-headline-line-height: 16px;
+  --ds-type-h2-headline-weight: 600;
+  --ds-type-h2-headline-tracking: 0.2px;
+  --ds-type-h2-headline-paragraph-spacing: 8px;
+  --ds-type-body-default: 400 14px/18px Inter, sans-serif;
+  --ds-type-body-default-size: 14px;
+  --ds-type-body-default-line-height: 18px;
+  --ds-type-body-default-weight: 400;
+  --ds-type-body-default-tracking: 0.2px;
+  --ds-type-body-default-paragraph-spacing: 8px;
+  --ds-type-body-default-medium: 500 14px/18px Inter, sans-serif;
+  --ds-type-body-default-medium-size: 14px;
+  --ds-type-body-default-medium-line-height: 18px;
+  --ds-type-body-default-medium-weight: 500;
+  --ds-type-body-default-medium-tracking: 0.2px;
+  --ds-type-body-default-medium-paragraph-spacing: 8px;
+  --ds-type-body-default-blod: 600 14px/18px Inter, sans-serif;
+  --ds-type-body-default-blod-size: 14px;
+  --ds-type-body-default-blod-line-height: 18px;
+  --ds-type-body-default-blod-weight: 600;
+  --ds-type-body-default-blod-tracking: 0.2px;
+  --ds-type-body-default-blod-paragraph-spacing: 8px;
+  --ds-type-small-caption: 400 12px/16px Inter, sans-serif;
+  --ds-type-small-caption-size: 12px;
+  --ds-type-small-caption-line-height: 16px;
+  --ds-type-small-caption-weight: 400;
+  --ds-type-small-caption-tracking: 0.2px;
+  --ds-type-small-caption-paragraph-spacing: 4px;
+  --ds-type-small-caption-medium: 500 12px/16px Inter, sans-serif;
+  --ds-type-small-caption-medium-size: 12px;
+  --ds-type-small-caption-medium-line-height: 16px;
+  --ds-type-small-caption-medium-weight: 500;
+  --ds-type-small-caption-medium-tracking: 0.2px;
+  --ds-type-small-caption-medium-paragraph-spacing: 4px;
+  --ds-type-small-caption-bold: 600 12px/16px Inter, sans-serif;
+  --ds-type-small-caption-bold-size: 12px;
+  --ds-type-small-caption-bold-line-height: 16px;
+  --ds-type-small-caption-bold-weight: 600;
+  --ds-type-small-caption-bold-tracking: 0.2px;
+  --ds-type-small-caption-bold-paragraph-spacing: 4px;
+  --ds-type-ultra-small: 400 11px/16px Inter, sans-serif;
+  --ds-type-ultra-small-size: 11px;
+  --ds-type-ultra-small-line-height: 16px;
+  --ds-type-ultra-small-weight: 400;
+  --ds-type-ultra-small-tracking: 0.2px;
+  --ds-type-ultra-small-paragraph-spacing: 4px;
+  --ds-spacing-4: 4px;
+  --ds-spacing-8: 8px;
+  --ds-spacing-12: 12px;
+  --ds-spacing-16: 16px;
+  --ds-spacing-24: 24px;
+  --ds-spacing-0: 0px;
+  --ds-border-radius-4px: 4px;
+  --ds-border-radius-0px: 0px;
+  --ds-border-radius-8px: 8px;
+  --ds-spacing-32: 32px;
+  --ds-spacing-40: 40px;
+  --ds-spacing-48: 48px;
+  --ds-spacing-64: 64px;
+  --ds-spacing-80: 80px;
+  --ds-spacing-2: 2px;
+  --ds-border-radius-round: 999px;
+  --ds-border-radius-6px: 6px;
+  --ds-size-18: 12px;
+  --ds-shadow-micro: 0px 1px 1px 0px rgba(0, 0, 0, 0.09);
+  --ds-shadow-normal: 0px 0px 7px 4px rgba(0, 0, 0, 0.04);
+  --ds-shadow-super: 0px 0px 1px 0px rgba(0, 0, 0, 0.04), 0px 0px 2px 0px rgba(0, 0, 0, 0.06), 0px 0px 8px 0px rgba(0, 0, 0, 0.04), 0px 0px 1px 0px rgba(0, 0, 0, 0.04), 0px 0px 2px 0px rgba(0, 0, 0, 0.06), 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+}
+.uk-type-h0-headline { font: var(--ds-type-h0-headline); letter-spacing: var(--ds-type-h0-headline-tracking); font-variant-numeric: lining-nums tabular-nums; }
+.uk-type-h1-headline { font: var(--ds-type-h1-headline); letter-spacing: var(--ds-type-h1-headline-tracking); font-variant-numeric: lining-nums tabular-nums; }
+.uk-type-h2-headline { font: var(--ds-type-h2-headline); letter-spacing: var(--ds-type-h2-headline-tracking); font-variant-numeric: lining-nums tabular-nums; }
+.uk-type-body-default { font: var(--ds-type-body-default); letter-spacing: var(--ds-type-body-default-tracking); font-variant-numeric: lining-nums tabular-nums; }
+.uk-type-body-default-medium { font: var(--ds-type-body-default-medium); letter-spacing: var(--ds-type-body-default-medium-tracking); font-variant-numeric: lining-nums tabular-nums; }
+.uk-type-body-default-blod { font: var(--ds-type-body-default-blod); letter-spacing: var(--ds-type-body-default-blod-tracking); font-variant-numeric: lining-nums tabular-nums; }
+.uk-type-small-caption { font: var(--ds-type-small-caption); letter-spacing: var(--ds-type-small-caption-tracking); font-variant-numeric: lining-nums tabular-nums; }
+.uk-type-small-caption-medium { font: var(--ds-type-small-caption-medium); letter-spacing: var(--ds-type-small-caption-medium-tracking); font-variant-numeric: lining-nums tabular-nums; }
+.uk-type-small-caption-bold { font: var(--ds-type-small-caption-bold); letter-spacing: var(--ds-type-small-caption-bold-tracking); font-variant-numeric: lining-nums tabular-nums; }
+.uk-type-ultra-small { font: var(--ds-type-ultra-small); letter-spacing: var(--ds-type-ultra-small-tracking); font-variant-numeric: lining-nums tabular-nums; }

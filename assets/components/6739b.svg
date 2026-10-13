@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 1959">
+<g id="Rectangle 713">
+<path d="M0 4C0 1.79086 1.79086 0 4 0H16C18.2091 0 20 1.79086 20 4V16C20 18.2091 18.2091 20 16 20H4C1.79086 20 0 18.2091 0 16V4Z" fill="#F8F8F8"/>
+<mask id="stroke0_0_22" fill="white">
+<path d="M0 4C0 1.79086 1.79086 0 4 0H16C18.2091 0 20 1.79086 20 4V16C20 18.2091 18.2091 20 16 20H4C1.79086 20 0 18.2091 0 16V4Z"/>
+</mask>
+<path d="M4 20H16C18.2091 20 20 18.2091 20 16V4C20 1.79086 18.2091 0 16 0H4C1.79086 0 0 1.79086 0 4V16C0 18.2091 1.79086 20 4 20Z" stroke-width="2" stroke="#D0D0D1" mask="url(#stroke0_0_22)"/>
+</g>
+<g id="Vector 1 (Stroke)">
+</g>
+</g>
+</svg>

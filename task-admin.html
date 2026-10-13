@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Админка — проверки контрагентов</title>
+  <link rel="stylesheet" href="design-tokens.css">
+  <link rel="stylesheet" href="foundation-tokens.css">
+  <link rel="stylesheet" href="form-controls.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="tables.css">
+  <link rel="stylesheet" href="task-admin.css">
+  <link rel="stylesheet" href="task-inspector.css">
+</head>
+<body class="uk-component admin-app">
+<svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="i-tasks" viewBox="0 0 24 24"><path d="m3 6 2 2 4-4M12 6h9M3 16l2 2 4-4M12 16h9"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m3 7 9-5 9 5-9 5-9-5Zm0 5 9 5 9-5M3 17l9 5 9-5"/></symbol>
+  <symbol id="i-history" viewBox="0 0 24 24"><path d="M4 5v5h5M4.5 10a8 8 0 1 1-.1 7M12 7v5l4 2"/></symbol>
+  <symbol id="i-nodes" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="1"/><rect x="3" y="14" width="18" height="7" rx="1"/><path d="M6 6.5h1M6 17.5h1M11 6.5h7M11 17.5h7"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><path d="M3 6h11m4 0h3M3 18h3m4 0h11"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="18" r="2"/></symbol>
+  <symbol id="i-audit" viewBox="0 0 24 24"><path d="M2 12h5l3-9 4 18 3-9h5"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4.2 1.8L12 12v2M12 17h.01"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="9" r="3"/><path d="M6 19v-2a6 6 0 0 1 12 0v2"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m5 9 7 7 7-7"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></symbol>
+  <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14a4 4 0 0 0 8 0M8 9h.01M16 9h.01"/></symbol>
+  <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4M21 6H7a4 4 0 0 0-4 4m4 12-4-4 4-4m-4 4h14a4 4 0 0 0 4-4"/></symbol>
+  <symbol id="i-background" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="15" rx="1"/><path d="M8 3h2m3 0h2m3 0h3v3m0 3v3m0 3v2"/></symbol>
+  <symbol id="i-infinity" viewBox="0 0 24 24"><path d="M12 12C9 5 3 6 3 12s6 7 9 0 9-6 9 0-6 7-9 0Z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="4" y="7" width="13" height="14" rx="1"/><path d="M8 7V3h13v14h-4"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 19 19 5M7 5h12v12"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8V4Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+</defs></svg>
+<a class="skip-link" href="#main-content">К содержимому</a>
+<header class="app-header">
+  <a class="brand" href="ui-kit.html" aria-label="Открыть дизайн-систему"><span>Н</span></a>
+  <nav class="product-nav" aria-label="Разделы продукта">
+    <button class="product-active" type="button" data-view="tasks">Админка</button>
+    <button class="product-group" type="button" data-module="ЕК">ЕК</button>
+    <button type="button" data-module="Контрагенты">Контрагенты</button>
+    <button type="button" data-module="Конфликты">Конфликты <span class="conflict-count">55</span></button>
+    <button type="button" data-view="runs">Отчёты</button>
+    <button class="product-group" type="button" data-module="ЦУС">ЦУС</button>
+    <button type="button" data-module="Согласия">Согласия</button>
+    <button type="button" data-module="Партнёры">Партнёры</button>
+    <button type="button" data-view="history">История</button>
+    <button class="product-group" type="button" data-module="КУС">КУС</button>
+    <button type="button" data-module="Анкеты">Анкеты</button>
+    <button type="button" data-view="audit">Журнал проверок</button>
+  </nav>
+  <div class="header-account"><button class="support-button" type="button" data-support><svg class="icon"><use href="#i-help"/></svg><span>Поддержка</span></button><button type="button" data-account><svg class="icon"><use href="#i-user"/></svg><span>performer_consent</span><svg class="icon icon-small"><use href="#i-down"/></svg></button></div>
+</header>
+<aside class="side-nav"><nav aria-label="Навигация админки">
+  <button type="button" data-view="tasks" aria-current="page"><svg class="icon"><use href="#i-tasks"/></svg><span>Задачи</span></button>
+  <button type="button" data-view="triggers"><svg class="icon"><use href="#i-layers"/></svg><span>Триггеры</span></button>
+  <button type="button" data-view="history"><svg class="icon"><use href="#i-history"/></svg><span>История</span></button>
+  <button type="button" data-view="nodes"><svg class="icon"><use href="#i-nodes"/></svg><span>Ноды</span></button>
+  <button type="button" data-view="settings"><svg class="icon"><use href="#i-settings"/></svg><span>Настройки</span></button>
+  <button type="button" data-view="audit"><svg class="icon"><use href="#i-audit"/></svg><span>Аудит</span></button>
+</nav><a class="side-extra" href="ui-kit.html#foundations">UI KIT</a></aside>
+<div class="app-workspace">
+  <div class="breadcrumb"><button type="button" id="back-button"><svg class="icon icon-small icon-left"><use href="#i-chevron"/></svg><span id="breadcrumb-label">Маркетинговые кампании</span></button><a href="ui-kit.html">Дизайн-система <svg class="icon icon-small"><use href="#i-arrow"/></svg></a></div>
+  <main id="main-content" tabindex="-1">
+    <section id="task-view" aria-labelledby="task-title">
+      <div class="task-heading">
+        <div class="task-badges" id="task-badges"></div>
+        <h1 id="task-title">Проверки по чёрным спискам контрагентов, требующих актуализации</h1>
+        <div class="task-code"><span>actualizeBlacklistCheck</span><button class="ui-button" data-size="s" type="button" id="stages-button" aria-haspopup="dialog" aria-expanded="false">Этапы задачи <svg class="icon icon-small"><use href="#i-down"/></svg></button></div>
+      </div>
+      <div class="task-content">
+        <section class="configuration-section" aria-labelledby="config-title">
+          <div class="section-heading"><h2 id="config-title">Конфигурации задачи</h2><div class="carousel-controls"><button class="icon-button" type="button" id="config-prev" aria-label="Предыдущие конфигурации"><svg class="icon icon-left"><use href="#i-chevron"/></svg></button><button class="icon-button" type="button" id="config-next" aria-label="Следующие конфигурации"><svg class="icon"><use href="#i-chevron"/></svg></button></div></div>
+          <div class="config-strip" id="config-strip" role="group" aria-label="Конфигурации задачи"></div>
+          <div class="configuration-details">
+            <div id="config-collapse"></div>
+            <div class="trigger-line"><span>Состоит в триггерах:</span><button class="text-link" type="button" data-trigger="diagnosticMetricsForPreviousMonthTrigger"><svg class="icon icon-small"><use href="#i-layers"/></svg>diagnosticMetricsForPreviousMonthTrigger</button><button class="text-link" type="button" data-trigger="detectPopularAttributesTrigger"><svg class="icon icon-small"><use href="#i-layers"/></svg>detectPopularAttributesTrigger</button></div>
+            <div class="configuration-footer"><button class="ui-button" data-type="outline" data-color="accent" data-size="m" data-state="default" type="button" id="run-button" aria-label="Запустить"><span class="ui-button__label">Запустить</span><span class="button-spinner button-spinner--only" aria-hidden="true"></span></button><span class="selected-config-caption" id="selected-config-caption"></span><span class="run-feedback" id="run-feedback" role="status" aria-live="polite"></span></div>
+          </div>
+        </section>
+        <section class="runs-section" aria-label="Последние запуски"><div id="task-runs"></div><div class="runs-footer"><button class="ui-button" data-type="outline" data-color="neutral" type="button" data-view="runs">Перейти ко всем запускам <svg class="icon"><use href="#i-arrow"/></svg></button><span>Последние запуски этой задачи</span></div></section>
+      </div>
+    </section>
+    <section id="secondary-view" class="secondary-view" hidden aria-labelledby="secondary-title"><div class="section-heading"><div><p class="eyebrow">АДМИНКА</p><h1 id="secondary-title"></h1><p id="secondary-description"></p></div><button type="button" class="ui-button" data-view="tasks">К задаче</button></div><div id="secondary-content"></div></section>
+  </main>
+  <footer class="app-footer"><span>Версия: 25.2.5 · actualizeBlacklistCheck</span><span>Интерактивный пример · действия выполняются локально</span><a href="ui-kit.html">На базе UI KIT</a></footer>
+</div>
+<div class="app-toast" id="app-toast" role="status" aria-live="polite" hidden></div>
+<div class="app-popover uk-component" id="app-popover" role="dialog" tabindex="-1" hidden></div>
+<dialog class="config-modal uk-component" id="config-modal" aria-labelledby="modal-title"><form id="config-form" novalidate><div class="modal-heading"><div><p class="eyebrow">КОНФИГУРАЦИЯ ЗАДАЧИ</p><h2 id="modal-title">Новая конфигурация</h2></div><button class="icon-button clear-button" type="button" id="modal-close" aria-label="Закрыть"><img src="assets/icons/865ea.svg" width="18" height="18" alt=""></button></div><p class="modal-intro">Задайте параметры проверки контрагентов.</p><div class="modal-fields"><div id="config-name-field"></div><div id="config-timeout-field"></div><div id="config-party-field"></div><div id="config-page-field"></div></div><div class="modal-choice" id="config-terminate-field"></div><div class="modal-choice" id="config-background-field"></div><div class="form-error" id="config-form-error" role="alert"></div><div class="modal-footer"><button class="ui-button" type="button" id="modal-cancel">Отмена</button><button class="ui-button" data-type="primary" data-color="accent" type="submit" id="modal-save">Создать конфигурацию</button></div></form></dialog>
+<script src="form-controls.js"></script><script src="components.js"></script><script src="tables.js"></script><script src="task-admin.js"></script><script src="foundation-tokens.js"></script><script src="task-inspector-rules.js"></script><script src="design-tokens.js"></script><script src="task-inspector-extras.js"></script><script src="task-inspector.js"></script>
+</body></html>
