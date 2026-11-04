@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>NewMenu — конструктор</title>
+<style>
+:root{--accent:#0e7d8f;--text:#1b1e24;--muted:#76787c;--border:#e5e5e6;--hover:#f5fafb;--hover-text:#2b8d9c;--hover-icon:#0b6574;--icon:#636569;--danger:#d91528;--simple-text-disabled:#adaeb0;--surface:#fff;--menu-width:320px;--list-height:360px;--row-radius:4px}
+*{box-sizing:border-box}body{margin:0;background:#f5f6f7;color:var(--text);font:14px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;letter-spacing:.2px}button,input,select{font:inherit;color:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.45}[hidden]{display:none!important}button,input,select,a{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}button{touch-action:manipulation}
+.page{max-width:1320px;margin:auto;padding:36px 40px 32px}.page-header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:28px}.eyebrow{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;margin-bottom:8px}.brand-mark{width:8px;height:8px;background:var(--accent);border-radius:2px}h1{font-size:28px;line-height:36px;letter-spacing:-.7px;margin:0 0 6px;font-weight:600}.subtitle{margin:0;color:var(--muted);max-width:620px;font-size:13px}.header-actions{display:flex;gap:8px;flex:none;padding-top:22px}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:34px;padding:7px 12px;border:1px solid var(--border);border-radius:5px;background:#fff;font-size:13px;line-height:18px;text-decoration:none}.button:hover{background:#f9fafb}.button--primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}.button--primary:hover{background:#0b6e7e;border-color:#0b6e7e}.workspace{display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;align-items:start}.settings{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden}.settings-head{padding:18px 20px 16px;border-bottom:1px solid #eff0f1}.settings-head h2{margin:0 0 3px;font-size:15px;line-height:22px;font-weight:600}.settings-head p{margin:0;color:var(--muted);font-size:12px}.settings-section{margin:0;padding:18px 20px;border:0;border-bottom:1px solid #eff0f1;min-width:0}.settings-section:last-of-type{border-bottom:0}.section-title{font-size:11px;line-height:16px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--muted);margin:0 0 14px}.switch-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:32px;font-size:13px;cursor:pointer}.switch-row+.switch-row{margin-top:5px}.switch-label{display:flex;align-items:center;gap:6px}.switch-row input{appearance:none;-webkit-appearance:none;position:relative;flex:none;width:30px;height:18px;margin:0;border:1px solid #d5d8da;border-radius:10px;background:#dfe2e4;cursor:pointer;transition:background .15s,border-color .15s}.switch-row input::after{content:"";position:absolute;left:2px;top:2px;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 1px 2px #0002;transition:transform .15s}.switch-row input:checked{background:var(--accent);border-color:var(--accent)}.switch-row input:checked::after{transform:translateX(12px)}.switch-row input:disabled{cursor:default;opacity:.35}.switch-row:has(input:disabled){color:#a6a9ad}.switch-row--sub{padding-left:12px;font-size:12px}.control-field{display:block;margin-bottom:16px;font-size:12px}.control-field:last-child{margin-bottom:0}.field-label{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.field-value{color:var(--muted);font-variant-numeric:tabular-nums}.text-input,.select-input{width:100%;height:32px;border:1px solid #d5d8da;border-radius:4px;background:#fff;padding:5px 8px;font-size:13px}.text-input:hover,.select-input:hover{border-color:#a7acb0}.control-field input[type=range]{display:block;width:100%;margin:0;accent-color:var(--accent);height:18px;cursor:pointer}.settings-note{margin:12px 0 0;color:var(--muted);font-size:11px;line-height:16px}.presets{display:flex;gap:6px;flex-wrap:wrap}.preset{border:1px solid var(--border);border-radius:4px;background:#fff;padding:5px 8px;font-size:11px;line-height:16px}.preset:hover{border-color:#9fbfc4;background:var(--hover)}.settings-bottom{padding:14px 20px;background:#fbfcfc;border-top:1px solid #eff0f1}.reset-settings{border:0;padding:0;background:transparent;font-size:12px;color:var(--muted)}.reset-settings:hover{color:var(--accent)}
+.preview-pane{min-width:0;position:sticky;top:24px}.preview-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 12px}.preview-heading h2{font-size:13px;font-weight:500;margin:0}.preview-state{display:flex;gap:6px;align-items:center;color:var(--muted);font-size:11px}.live-dot{width:5px;height:5px;border-radius:50%;background:#54a294}.stage{position:relative;min-height:670px;padding:24px 28px 28px;background:#ebeef0;border:1px solid #e1e5e7;border-radius:8px;display:flex;flex-direction:column;align-items:center;overflow:hidden}.stage-toolbar{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:26px}.stage-label{font-size:11px;color:#8c9399}.stage-toolbar .button{min-height:28px;padding:4px 9px;font-size:11px;background:#f8f9fa;color:#5c6369;border-color:#dbe0e3}.menu-anchor{width:var(--menu-width);max-width:100%;margin:0 auto}.stage-hint{margin:20px 0 0;color:#899198;font-size:11px;text-align:center;max-width:360px;line-height:18px}.preview-meta{display:flex;gap:12px;justify-content:space-between;margin:12px 2px 0;color:var(--muted);font-size:11px;line-height:18px}.preview-meta a{color:var(--muted);text-underline-offset:3px}.result{margin:16px auto 0;width:var(--menu-width);max-width:100%;border:1px solid #dce4e6;border-radius:6px;padding:12px;background:#f8fafb}.result-top{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:12px;font-weight:500}.result-count{font-size:11px;color:var(--muted);font-weight:400}.result-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}.result-tag{padding:3px 6px;border:1px solid #dbe8ea;border-radius:3px;background:#eef6f7;color:#377581;font-size:11px;line-height:16px}.toast{position:fixed;z-index:50;bottom:24px;left:50%;transform:translateX(-50%);padding:10px 16px;background:#26353a;color:#fff;border-radius:6px;box-shadow:0 3px 14px #0002;font-size:12px;max-width:calc(100vw - 32px);text-align:center}.closed-state{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:300px;text-align:center;color:var(--muted);font-size:13px}
+/* NewMenu: fixed outer regions and a separately scrolling Items section. */
+.new-menu{display:flex;flex-direction:column;gap:12px;width:100%;padding:12px 0;border:1px solid var(--border);border-radius:6px;background:var(--surface);box-shadow:0 0 1px #0000000a,0 0 2px #0000000f,0 0 7px 4px #0000000a;overflow:hidden;letter-spacing:.2px}.menu-header{display:flex;align-items:flex-start;gap:8px;min-height:24px;margin:0 12px;color:#36393e}.menu-title{flex:1;min-width:0;font-weight:600;font-size:14px;line-height:18px;white-space:normal;overflow-wrap:anywhere}.asset{display:block;flex:none;width:18px;height:18px;background-color:var(--icon);mask:var(--asset) center/contain no-repeat;-webkit-mask:var(--asset) center/contain no-repeat}.asset--header{--asset:var(--asset-header)}.asset--folder{--asset:var(--asset-folder)}.asset--action{--asset:var(--asset-action)}.asset--chevron{--asset:var(--asset-chevron)}.asset--selection{--asset:var(--asset-selection);background-color:var(--accent)}.asset--search{--asset:var(--asset-search);width:24px;height:24px;background-color:var(--muted)}.header-action{display:grid;place-items:center;flex:none;width:24px;height:24px;padding:3px;margin:-3px;border:0;border-radius:4px;background:transparent}.header-action:hover{background:var(--hover)}.menu-control{position:relative;margin:0 12px}
+/* The scrollbar overlays the fixed 12 px gutter and never takes row width. */
+.items-region{position:relative;flex:none;min-width:0;width:100%}
+.items-scroll{max-height:var(--list-height);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:none;scroll-padding:4px;outline:none}
+.items-scroll::-webkit-scrollbar{display:none;width:0;height:0}
+.menu-items{padding:0 12px}
+.scrollbar{position:absolute;z-index:1;top:0;right:0;bottom:0;width:12px;touch-action:none;user-select:none}
+.scrollbar-thumb{position:absolute;top:0;left:4px;width:4px;height:60px;border:0;border-radius:9999px;background:#36393e;opacity:.15;cursor:grab}
+.scrollbar.is-dragging,.scrollbar.is-dragging .scrollbar-thumb{cursor:grabbing}
+.menu-row{display:flex;align-items:flex-start;gap:8px;width:100%;min-height:34px;margin:0;padding:8px 8px 8px calc(8px + var(--depth,0)*26px);border:0;border-radius:var(--row-radius);background:transparent;color:var(--text);text-align:left;line-height:18px}.row-copy{display:flex;flex:1;flex-direction:column;gap:4px;min-width:0}.row-title{display:block;font-size:14px;font-weight:400;line-height:18px;overflow-wrap:anywhere}.row-description{display:block;color:var(--muted);font-size:12px;line-height:16px;overflow-wrap:anywhere}.row-check{visibility:hidden}.menu-row[aria-checked=true]{color:var(--accent)}.menu-row[aria-checked=true]>.asset,.menu-row[aria-checked=true] .row-description{background-color:var(--accent)}.menu-row[aria-checked=true] .row-description{background-color:transparent;color:var(--accent)}.menu-row[aria-checked=true]>.row-check{visibility:visible}.menu-row:not(:disabled):is(:hover,:focus-visible){background:var(--hover);color:var(--hover-text)}.menu-row:not(:disabled):is(:hover,:focus-visible)>.asset{background-color:var(--hover-icon)}.menu-row:not(:disabled):is(:hover,:focus-visible) .row-description{color:var(--hover-text)}.menu-row[aria-checked=true]:is(:hover,:focus-visible),.menu-row[aria-checked=true]:is(:hover,:focus-visible) .row-description{color:var(--accent)}.menu-row[aria-checked=true]:is(:hover,:focus-visible)>.asset{background-color:var(--accent)}.menu-row:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}.menu-row:disabled{color:#b0b2b6;opacity:1}.menu-row:disabled .row-description{color:#b0b2b6}.menu-row:disabled>.asset{background-color:#b0b2b6}.menu-row[aria-expanded=true]>.asset--chevron{transform:rotate(90deg)}.empty{display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px;margin:0;background:#fff;color:var(--muted);font-size:14px;line-height:18px;text-align:center}.empty strong{display:block;width:100%;max-width:450px;margin:0;font-weight:600;color:#08080a}.empty p{width:100%;max-width:450px;margin:0;font-weight:400;overflow-wrap:anywhere}.menu-footer{display:flex;flex-direction:column;gap:12px;flex:none}.footer-divider{border:0;margin:0;height:1px;width:100%;background:var(--border)}.footer-links{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 12px}.menu-link{border:0;background:transparent;padding:0;color:var(--accent);font-size:14px;line-height:18px}.menu-link:not(:disabled):hover{text-decoration:underline;text-underline-offset:3px}.menu-link--danger{color:var(--danger)}.menu-link--danger:disabled{color:var(--simple-text-disabled);opacity:1;text-decoration:none}.footer-apply{display:flex;justify-content:center;align-items:center;gap:6px;min-height:32px;margin:0 12px;padding:7px 12px;border:0;border-radius:4px;background:var(--accent);color:#fff;font-size:14px;font-weight:600;line-height:18px}.footer-apply:hover{background:#0b6e7e}.menu-stats{font-size:11px;color:var(--muted);text-align:center;margin:12px 0 0;line-height:18px}.new-menu.no-icons .leading-icon{display:none}.new-menu.no-descriptions .row-description{display:none}
+.select-input{appearance:none;-webkit-appearance:none;padding-right:40px;background-color:#fff;background-image:var(--asset-selector-chevron);background-repeat:no-repeat;background-position:right 8px center;background-size:24px 24px}
+/* NewSearch / NewSelector, M32: one 1 px border in every state. */
+.kit-control::-webkit-search-cancel-button,.kit-control::-webkit-search-decoration{display:none}
+.text-input:is(:focus,:focus-visible,:active),.select-input:is(:hover,:focus,:focus-visible,:active){border-color:var(--accent);outline:none;outline-offset:0;box-shadow:none}
+
+.kit-field{position:relative;display:flex;align-items:center;gap:8px;width:100%;height:32px;padding:0 8px;border:1px solid #8f9092;border-radius:4px;background:#fff;box-shadow:none;cursor:text}
+.kit-field:hover,.kit-field:focus-within{border-color:var(--accent)}
+.kit-field .kit-control{display:block;flex:1;min-width:0;width:100%;height:30px;margin:0;padding:0;border:0;border-radius:0;background:transparent;color:#36393e;line-height:18px;font-size:14px;letter-spacing:.2px;box-shadow:none;outline:none;appearance:none;-webkit-appearance:none}
+.kit-field :is(input,select,button):is(:focus,:focus-visible,:active){outline:none;outline-offset:0;box-shadow:none}
+.kit-caption{position:absolute;z-index:1;left:8px;top:50%;transform:translateY(-50%);max-width:calc(100% - 48px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;pointer-events:none;color:var(--muted);font-size:14px;line-height:18px}
+.kit-field:is(.is-filled,:focus-within)>.kit-caption{top:2px;transform:none;font-size:11px;line-height:8px}
+.kit-field:focus-within>.kit-caption{color:var(--accent)}
+.kit-field:not(.kit-field--selector):is(.is-filled,:focus-within)>.kit-control{padding-top:10px}
+.kit-field>.asset--search{position:static;width:24px;height:24px;pointer-events:none;background-color:var(--muted)}
+.kit-clear{position:relative;flex:none;display:grid;place-items:center;width:26px;height:30px;margin:0;padding:0 0 0 8px;border:0;border-radius:0;background:transparent}
+.kit-clear::before{content:"";position:absolute;left:0;top:0;width:1px;height:30px;background:var(--asset-clear-divider) center/1px 30px no-repeat}
+.asset--clear{--asset:var(--asset-clear);background-color:var(--muted)}
+.kit-clear:is(:hover,:focus-visible)>.asset--clear{background-color:var(--accent)}
+.kit-field--selector{cursor:pointer}
+.kit-field--selector>.kit-control{position:absolute;inset:0;width:100%;height:30px;padding:0 40px 0 8px;cursor:pointer;background:none;line-height:18px}
+.kit-field--selector option{color:#36393e;background:#fff}
+.kit-field--selector>.asset--selector-chevron{--asset:var(--asset-selector-chevron);position:absolute;right:8px;top:3px;width:24px;height:24px;pointer-events:none;background-color:var(--muted)}
+.kit-field--selector:has(select:open)>.asset--selector-chevron{--asset:var(--asset-selector-chevron-up)}
+.kit-field.is-filled>.kit-caption{max-width:calc(100% - 82px)}
+@supports(text-box-trim:trim-both){.kit-field:is(.is-filled,:focus-within)>.kit-caption{line-height:16px;text-box-trim:trim-both;text-box-edge:cap alphabetic}}
+body.exported{background:#f5f6f7}.exported .page-header,.exported .settings,.exported .preview-heading,.exported .preview-meta,.exported .stage-toolbar,.exported .stage-hint{display:none}.exported .page{max-width:900px;padding:40px 24px}.exported .workspace{display:block}.exported .preview-pane{position:static}.exported .stage{background:transparent;border:0;min-height:0;padding:8px}.exported .result{background:#fff}
+@media(min-width:1100px){.settings{max-height:calc(100vh - 64px);overflow-y:auto;scrollbar-width:thin}.preview-pane{top:24px}}
+@media(max-width:850px){.page{padding:24px}.workspace{grid-template-columns:260px minmax(0,1fr);gap:16px}.settings-section{padding:16px}.settings-head{padding:16px}.stage{padding:20px 12px;min-height:640px}.header-actions{padding-top:0;flex-wrap:wrap;justify-content:flex-end}.page-header{gap:16px}.preview-meta{flex-direction:column;gap:2px}}
+@media(max-width:650px){.page{padding:20px 16px}.page-header{display:block;margin-bottom:22px}.header-actions{justify-content:flex-start;margin-top:16px}.workspace{display:flex;flex-direction:column-reverse;gap:24px}.preview-pane,.settings{width:100%;position:static}.stage{min-height:0;padding:16px 10px 24px}.stage-toolbar{margin-bottom:20px}.stage-hint{margin-top:16px}.settings-section{padding:18px 20px}.settings-head{padding:18px 20px}h1{font-size:26px}.preview-meta{flex-direction:row;flex-wrap:wrap}.new-menu{max-width:100%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+</style>
+<style id="embedded-assets">:root{--asset-clear-divider:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjEiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAxIDMwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBpZD0iVmVjdG9yIDQiIGQ9Ik0wLjUgMFYzMCIgc3Ryb2tlPSIjRTVFNUU2Ii8+Cjwvc3ZnPgo=");--asset-clear:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB2aWV3Qm94PSIwIDAgMTggMTgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJ4LWNsb3NlIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik0xMy41IDQuNUw5IDlNOSA5TDQuNSAxMy41TTkgOUw0LjUgNC41TTkgOUwxMy41IDEzLjUiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0iIzhGOTA5MiIvPgo8L2c+Cjwvc3ZnPgo=");--asset-selector-chevron-up:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJhY3R1YWwtY2hldnJvbi11cCI+CjxwYXRoIGlkPSJJY29uIiBkPSJNMTggMTVMMTIgOUw2IDE1IiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2U9IiM3Njc4N0MiLz4KPC9nPgo8L3N2Zz4K");--asset-selector-chevron:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJhY3R1YWwtY2hldnJvbi1kb3duIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik02IDlMMTIgMTVMMTggOSIgc3Ryb2tlLXdpZHRoPSIxLjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSIjNzY3ODdDIi8+CjwvZz4KPC9zdmc+Cg==");--asset-header:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB2aWV3Qm94PSIwIDAgMTggMTgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJMZWFkaW5nIGljb24iPgo8cGF0aCBpZD0iSWNvbiIgZD0iTTkuNzUgNS4yNUw4LjkxMzM0IDMuNTc2NjlDOC42NzI1NSAzLjA5NTEgOC41NTIxNSAyLjg1NDMgOC4zNzI1MyAyLjY3ODM3QzguMjEzNjggMi41MjI4IDguMDIyMjQgMi40MDQ0OCA3LjgxMjA2IDIuMzMxOThDNy41NzQzNyAyLjI1IDcuMzA1MTYgMi4yNSA2Ljc2NjcyIDIuMjVIMy45QzMuMDU5OTIgMi4yNSAyLjYzOTg4IDIuMjUgMi4zMTkwMSAyLjQxMzQ5QzIuMDM2NzcgMi41NTczIDEuODA3MyAyLjc4Njc3IDEuNjYzNDkgMy4wNjkwMUMxLjUgMy4zODk4OCAxLjUgMy44MDk5MiAxLjUgNC42NVY1LjI1TTEuNSA1LjI1SDEyLjlDMTQuMTYwMSA1LjI1IDE0Ljc5MDIgNS4yNSAxNS4yNzE1IDUuNDk1MjRDMTUuNjk0OCA1LjcxMDk1IDE2LjAzOSA2LjA1NTE2IDE2LjI1NDggNi40Nzg1MkMxNi41IDYuOTU5ODIgMTYuNSA3LjU4OTg4IDE2LjUgOC44NVYxMi4xNUMxNi41IDEzLjQxMDEgMTYuNSAxNC4wNDAyIDE2LjI1NDggMTQuNTIxNUMxNi4wMzkgMTQuOTQ0OCAxNS42OTQ4IDE1LjI4OSAxNS4yNzE1IDE1LjUwNDhDMTQuNzkwMiAxNS43NSAxNC4xNjAxIDE1Ljc1IDEyLjkgMTUuNzVINS4xQzMuODM5ODggMTUuNzUgMy4yMDk4MiAxNS43NSAyLjcyODUyIDE1LjUwNDhDMi4zMDUxNiAxNS4yODkgMS45NjA5NSAxNC45NDQ4IDEuNzQ1MjQgMTQuNTIxNUMxLjUgMTQuMDQwMiAxLjUgMTMuNDEwMSAxLjUgMTIuMTVWNS4yNVoiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0iIzc2Nzg3QyIvPgo8L2c+Cjwvc3ZnPgo=");--asset-action:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB2aWV3Qm94PSIwIDAgMTggMTgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJBY3Rpb24gaWNvbiI+CjxwYXRoIGlkPSJJY29uIiBkPSJNNC41IDEzLjVMMTMuNSA0LjVNMTMuNSAxMC41VjQuNUg3LjUiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0iIzc2Nzg3QyIvPgo8L2c+Cjwvc3ZnPgo=");--asset-search:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJzZWFyY2gtbWQiPgo8cGF0aCBpZD0iSWNvbiIgZD0iTTIxIDIxTDE2LjY1IDE2LjY1TTE5IDExQzE5IDE1LjQxODMgMTUuNDE4MyAxOSAxMSAxOUM2LjU4MTcyIDE5IDMgMTUuNDE4MyAzIDExQzMgNi41ODE3MiA2LjU4MTcyIDMgMTEgM0MxNS40MTgzIDMgMTkgNi41ODE3MiAxOSAxMVoiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0iIzc2Nzg3QyIvPgo8L2c+Cjwvc3ZnPgo=");--asset-folder:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB2aWV3Qm94PSIwIDAgMTggMTgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJMZWFkaW5nIGljb24iPgo8cGF0aCBpZD0iSWNvbiIgZD0iTTkuNzUgNS4yNUw4LjkxMzM0IDMuNTc2NjlDOC42NzI1NSAzLjA5NTEgOC41NTIxNSAyLjg1NDMgOC4zNzI1MyAyLjY3ODM3QzguMjEzNjggMi41MjI4IDguMDIyMjQgMi40MDQ0OCA3LjgxMjA2IDIuMzMxOThDNy41NzQzNyAyLjI1IDcuMzA1MTYgMi4yNSA2Ljc2NjcyIDIuMjVIMy45QzMuMDU5OTIgMi4yNSAyLjYzOTg4IDIuMjUgMi4zMTkwMSAyLjQxMzQ5QzIuMDM2NzcgMi41NTczIDEuODA3MyAyLjc4Njc3IDEuNjYzNDkgMy4wNjkwMUMxLjUgMy4zODk4OCAxLjUgMy44MDk5MiAxLjUgNC42NVY1LjI1TTEuNSA1LjI1SDEyLjlDMTQuMTYwMSA1LjI1IDE0Ljc5MDIgNS4yNSAxNS4yNzE1IDUuNDk1MjRDMTUuNjk0OCA1LjcxMDk1IDE2LjAzOSA2LjA1NTE2IDE2LjI1NDggNi40Nzg1MkMxNi41IDYuOTU5ODIgMTYuNSA3LjU4OTg4IDE2LjUgOC44NVYxMi4xNUMxNi41IDEzLjQxMDEgMTYuNSAxNC4wNDAyIDE2LjI1NDggMTQuNTIxNUMxNi4wMzkgMTQuOTQ0OCAxNS42OTQ4IDE1LjI4OSAxNS4yNzE1IDE1LjUwNDhDMTQuNzkwMiAxNS43NSAxNC4xNjAxIDE1Ljc1IDEyLjkgMTUuNzVINS4xQzMuODM5ODggMTUuNzUgMy4yMDk4MiAxNS43NSAyLjcyODUyIDE1LjUwNDhDMi4zMDUxNiAxNS4yODkgMS45NjA5NSAxNC45NDQ4IDEuNzQ1MjQgMTQuNTIxNUMxLjUgMTQuMDQwMiAxLjUgMTMuNDEwMSAxLjUgMTIuMTVWNS4yNVoiIHN0cm9rZS13aWR0aD0iMS40IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZT0iIzYzNjU2OSIvPgo8L2c+Cjwvc3ZnPgo=");--asset-chevron:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB2aWV3Qm94PSIwIDAgMTggMTgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJDaGV2cm9uIj4KPHBhdGggaWQ9Ikljb24iIGQ9Ik02Ljc1IDEzLjVMMTEuMjUgOUw2Ljc1IDQuNSIgc3Ryb2tlLXdpZHRoPSIxLjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSIjMEI2NTc0Ii8+CjwvZz4KPC9zdmc+Cg==");--asset-selection:url("data:image/svg+xml;base64,PHN2ZyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrOyIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB2aWV3Qm94PSIwIDAgMTggMTgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGlkPSJTZWxlY3Rpb24iPgo8cGF0aCBpZD0iSWNvbiIgZD0iTTE1IDQuNUw2Ljc1IDEyLjc1TDMgOSIgc3Ryb2tlLXdpZHRoPSIxLjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlPSIjMEU3RDhGIi8+CjwvZz4KPC9zdmc+Cg==")}</style>
+<script id="initial-config" type="application/json">{}</script>
+</head>
+<body>
+<main class="page">
+  <header class="page-header">
+    <div><div class="eyebrow"><span class="brand-mark"></span>UI KIT <span aria-hidden="true">/</span> NewMenu</div><h1>Конструктор меню</h1><p class="subtitle">Настрой состав и размеры. Все изменения сразу видны в меню справа.</p></div>
+    <div class="header-actions"><button type="button" class="button" id="copy-config">Скопировать настройки</button><button type="button" class="button button--primary" id="download-menu">Скачать меню · HTML</button></div>
+  </header>
+  <div class="workspace">
+    <aside class="settings" aria-label="Настройки меню">
+      <div class="settings-head"><h2>Настройки</h2><p>Компоненты можно включать независимо</p></div>
+      <form id="settings-form" autocomplete="off">
+        <section class="settings-section"><h3 class="section-title">Состав меню</h3>
+          <label class="switch-row"><span>Шапка</span><input type="checkbox" data-option="header" checked></label>
+          <label class="switch-row switch-row--sub"><span>Иконка в шапке</span><input type="checkbox" data-option="headerIcon" checked></label>
+          <label class="switch-row switch-row--sub"><span>Действие справа</span><input type="checkbox" data-option="headerAction" checked></label>
+          <label class="switch-row"><span>Поиск / селектор</span><input type="checkbox" data-option="control" checked></label>
+          <label class="control-field" style="margin:8px 0 12px"><span class="field-label">Тип поля</span><select class="select-input" data-option="controlType"><option value="search">Поиск</option><option value="selector">Селектор раздела</option></select></label>
+          <label class="switch-row"><span>Футер</span><input type="checkbox" data-option="footer" disabled></label>
+          <p class="settings-note" id="footer-note">В режиме поиска футер отключён.</p>
+          <label class="switch-row switch-row--sub"><span>Разделитель</span><input type="checkbox" data-option="divider" checked></label>
+          <label class="switch-row switch-row--sub"><span>«Выбрать все»</span><input type="checkbox" data-option="selectAll" checked></label>
+          <label class="switch-row switch-row--sub"><span>«Сбросить все»</span><input type="checkbox" data-option="resetAll" checked></label>
+          <label class="switch-row switch-row--sub"><span>Кнопка «Применить»</span><input type="checkbox" data-option="apply" checked></label>
+        </section>
+        <section class="settings-section"><h3 class="section-title">Пункты и группы</h3>
+          <label class="switch-row"><span>Иконки пунктов</span><input type="checkbox" data-option="icons" checked></label>
+          <label class="switch-row"><span>Описания</span><input type="checkbox" data-option="descriptions" checked></label>
+          <label class="switch-row"><span>Раскрывающиеся группы</span><input type="checkbox" data-option="groups" checked></label>
+          <label class="switch-row"><span>Скроллбар</span><input type="checkbox" data-option="scroll" checked></label>
+          <label class="control-field" style="margin-top:14px"><span class="field-label">Объём списка</span><select class="select-input" data-option="amount"><option value="24">24 пункта</option><option value="48" selected>48 пунктов</option><option value="80">80 пунктов</option></select></label>
+          <div class="presets"><button type="button" class="preset" id="expand-all">Раскрыть все</button><button type="button" class="preset" id="collapse-all">Свернуть все</button></div>
+        </section>
+        <section class="settings-section"><h3 class="section-title">Размеры и отступы</h3>
+          <label class="control-field"><span class="field-label">Ширина меню <output id="width-value" class="field-value">320 px</output></span><input type="range" min="280" max="520" step="8" value="320" data-option="width" aria-label="Ширина меню"></label>
+          <label class="control-field"><span class="field-label">Высота области списка <output id="height-value" class="field-value">360 px</output></span><input type="range" min="160" max="560" step="20" value="360" data-option="height" aria-label="Высота области списка"></label>
+          <p class="settings-note">От пунктов до краёв панели — всегда 12 px. Скроллбар расположен в правом отступе. Радиус панели 6 px, пунктов — 4 px; иконки 18 px.</p>
+        </section>
+        <section class="settings-section"><h3 class="section-title">Текст и варианты</h3>
+          <label class="control-field"><span class="field-label">Заголовок меню</span><input class="text-input" type="text" data-option="title" value="Выбор справочника" maxlength="100"></label>
+          <div class="presets"><button type="button" class="preset" data-preset="full">Полное</button><button type="button" class="preset" data-preset="compact">Компактное</button><button type="button" class="preset" data-preset="minimal">Только список</button></div>
+        </section>
+        <div class="settings-bottom"><button type="button" class="reset-settings" id="reset-settings">Вернуть исходные настройки</button></div>
+      </form>
+    </aside>
+    <section class="preview-pane" aria-label="Предпросмотр меню">
+      <div class="preview-heading"><h2>Предпросмотр</h2><span class="preview-state"><span class="live-dot"></span>Интерактивный</span></div>
+      <div class="stage">
+        <div class="stage-toolbar"><span class="stage-label">Наведи курсор · раскрой группу · выбери пункты</span><button class="button" type="button" id="toggle-menu" aria-controls="new-menu" aria-expanded="true">Закрыть меню</button></div>
+        <div class="menu-anchor">
+          <section class="new-menu" id="new-menu" aria-label="Выбор справочника">
+            <header class="menu-header" id="menu-header"><span class="asset asset--header" id="header-icon" aria-hidden="true"></span><span class="menu-title" id="menu-title">Выбор справочника</span><button type="button" class="header-action" id="header-action" title="Увеличить ширину" aria-label="Увеличить ширину"><span class="asset asset--action" aria-hidden="true"></span></button></header>
+            <div class="menu-control" id="menu-control">
+              <div class="kit-field" id="search-field" data-figma-component="NewSearch/M32">
+                <span class="kit-caption" aria-hidden="true">Поиск</span><input class="kit-control" type="search" id="menu-search" aria-label="Поиск справочника" autocomplete="off" spellcheck="false"><span class="asset asset--search" aria-hidden="true"></span><button type="button" class="kit-clear" id="clear-search" aria-label="Очистить поиск" hidden><span class="asset asset--clear" aria-hidden="true"></span></button>
+              </div>
+              <div class="kit-field kit-field--selector" id="selector-field" data-figma-component="NewSelector/M32" hidden>
+                <select class="menu-selector kit-control" id="menu-selector" aria-label="Раздел справочников"><option value="all" selected>Все разделы</option></select><span class="asset asset--selector-chevron" aria-hidden="true"></span>
+              </div>
+            </div>
+            <div class="items-region">
+              <div class="items-scroll" id="items-scroll" role="region" tabindex="0" aria-label="Список справочников, прокручиваемая область"><div class="menu-items" id="menu-items" role="menu" aria-label="Справочники"></div></div>
+              <div class="scrollbar" id="menu-scrollbar" aria-hidden="true" hidden><div class="scrollbar-thumb" id="menu-scrollbar-thumb"></div></div>
+            </div>
+            <footer class="menu-footer" id="menu-footer" hidden><hr class="footer-divider" id="footer-divider"><div class="footer-links" id="footer-links"><button type="button" class="menu-link" id="select-all">Выбрать все</button><button type="button" class="menu-link menu-link--danger" id="reset-all">Сбросить все</button></div><button type="button" class="footer-apply" id="apply">Применить</button></footer>
+          </section>
+          <div class="closed-state" id="closed-state" hidden><span>Меню закрыто</span><button type="button" class="button button--primary" id="reopen-menu">Открыть меню</button></div>
+          <p class="menu-stats" id="menu-stats" role="status" aria-live="polite"></p>
+        </div>
+        <p class="stage-hint">Поиск работает и во вложенных группах.<br>Шапка и футер не двигаются при прокрутке списка.</p>
+        <div class="result" id="result" hidden><div class="result-top"><span id="result-title">Выбор применён</span><span class="result-count" id="result-count"></span></div><div class="result-tags" id="result-tags"></div></div>
+      </div>
+      <div class="preview-meta"><span id="geometry-label">320 px · список до 360 px · отступ 12 px</span><a href="https://www.figma.com/design/pUX3P9VmLBkdQ1vIupjeSr/UI-KIT?node-id=18224-9523" target="_blank" rel="noopener">NewMenu в Figma ↗</a></div>
+    </section>
+  </div>
+</main>
+<div class="toast" id="toast" role="status" hidden></div>
+<script>
+(function () {
+  'use strict';
+  const defaults = {header:true,headerIcon:true,headerAction:true,control:true,controlType:'search',footer:true,divider:true,selectAll:true,resetAll:true,apply:true,icons:true,descriptions:true,groups:true,scroll:true,amount:48,width:320,height:360,title:'Выбор справочника'};
+  const byId = id => document.getElementById(id);
+  let restored = {};
+  try { restored = JSON.parse(byId('initial-config').textContent || '{}'); } catch (_) {}
+  const config = {...defaults};
+  const boolOptions = Object.keys(defaults).filter(key => typeof defaults[key] === 'boolean');
+  function loadConfig(source) {
+    boolOptions.forEach(key => { if (typeof source[key] === 'boolean') config[key] = source[key]; });
+    if (['search','selector'].includes(source.controlType)) config.controlType = source.controlType;
+    if ([24,48,80].includes(Number(source.amount))) config.amount = Number(source.amount);
+    for (const [key,min,max] of [['width',280,520],['height',160,560]]) if (Number.isFinite(Number(source[key]))) config[key] = Math.min(max,Math.max(min,Number(source[key])));
+    if (typeof source.title === 'string') config.title = source.title.slice(0,100);
+  }
+  loadConfig(restored.config || {});
+  const catalog = [
+    {id:'common',title:'Основные справочники',children:[
+      {id:'main',title:'Основной справочник',description:'Общие данные компании'},
+      {id:'projects',title:'Проекты',description:'Рабочие пространства и команды'},
+      {id:'organizations',title:'Организации',description:'Юридические лица и филиалы'},
+      {id:'employees',title:'Сотрудники',description:'Люди, роли и контактные данные'},
+      {id:'departments',title:'Подразделения',description:'Структура компании'}]},
+    {id:'sales',title:'Продажи и клиенты',children:[
+      {id:'clients',title:'Клиенты',description:'Компании и контактные лица'},
+      {id:'counterparties',title:'Контрагенты',description:'Партнёры и поставщики'},
+      {id:'deals',title:'Сделки',description:'Этапы и статусы продаж'},
+      {id:'contracts',title:'Договоры',description:'Действующие и архивные документы'},
+      {id:'client-contacts',title:'Контакты клиентов',description:'Телефоны, адреса и почта'},
+      {id:'sales-channels',title:'Каналы продаж',description:'Источники обращений'},
+      {id:'segments',title:'Сегменты клиентов',description:'Группы по общим признакам'}]},
+    {id:'finance',title:'Финансы',children:[
+      {id:'accounts',title:'Расчётные счета',description:'Банки и реквизиты'},
+      {id:'currencies',title:'Валюты',description:'Коды и курсы валют'},
+      {id:'budget',title:'Бюджетирование',children:[
+        {id:'budgets',title:'Бюджеты',description:'Планы доходов и расходов'},
+        {id:'cost-centers',title:'Центры затрат',description:'Направления распределения'},
+        {id:'expense-types',title:'Статьи расходов',description:'Категории затрат'},
+        {id:'income-types',title:'Статьи доходов',description:'Источники поступлений'}]},
+      {id:'payment-types',title:'Способы оплаты',description:'Наличные и безналичные'},
+      {id:'taxes',title:'Налоговые ставки',description:'Ставки и режимы учёта'},
+      {id:'finance-archive',title:'Архив финансов',description:'Недоступно для вашей роли',disabled:true}]},
+    {id:'products',title:'Продукты и склад',children:[
+      {id:'product-catalog',title:'Каталог продуктов',description:'Товары, работы и услуги'},
+      {id:'categories',title:'Категории продуктов',description:'Группы и подкатегории'},
+      {id:'units',title:'Единицы измерения',description:'Штуки, метры, килограммы'},
+      {id:'warehouses',title:'Склады',description:'Места хранения и остатки'},
+      {id:'suppliers',title:'Поставщики',description:'Условия и контакты'},
+      {id:'price-lists',title:'Прайс-листы',description:'Цены и условия поставки'},
+      {id:'brands',title:'Бренды',description:'Производители и торговые марки'}]},
+    {id:'operations',title:'Операционные справочники',children:[
+      {id:'locations',title:'Локации',description:'Офисы и рабочие площадки'},
+      {id:'regions',title:'Регионы',description:'Территории присутствия'},
+      {id:'delivery',title:'Доставка',children:[
+        {id:'delivery-methods',title:'Способы доставки',description:'Курьер, транспорт и самовывоз'},
+        {id:'carriers',title:'Перевозчики',description:'Транспортные компании'},
+        {id:'routes',title:'Маршруты',description:'Направления перевозок'}]},
+      {id:'resources',title:'Ресурсы',description:'Оборудование и материалы'},
+      {id:'processes',title:'Бизнес-процессы',description:'Сценарии и этапы работы'},
+      {id:'statuses',title:'Статусы',description:'Состояния задач и документов'}]},
+    {id:'administration',title:'Администрирование',children:[
+      {id:'roles',title:'Роли пользователей',description:'Наборы прав доступа'},
+      {id:'permissions',title:'Права доступа',description:'Доступные действия'},
+      {id:'notifications',title:'Уведомления',description:'События и получатели'},
+      {id:'templates',title:'Шаблоны документов',description:'Формы и типовые тексты'},
+      {id:'integrations',title:'Интеграции',description:'Подключения к внешним системам'},
+      {id:'data-sources',title:'Источники данных',description:'Подключённые базы и сервисы'},
+      {id:'import-rules',title:'Правила импорта',description:'Загрузка и сопоставление полей'},
+      {id:'export-rules',title:'Правила экспорта',description:'Выгрузка и форматы'},
+      {id:'audit',title:'Журнал изменений',description:'История действий в справочниках'}]}
+  ];
+  // Additional items make it possible to inspect scrolling with up to 80 leaves.
+  const extras = ['Типы документов','Категории задач','Календари','Рабочие графики','Причины отказа','Типы обращений','Приоритеты','Системы учёта','Типы адресов','Контактные каналы','Языки','Часовые пояса','Единицы хранения','Типы оборудования','Лицензии','Сертификаты','Классификаторы','Источники обращений','Теги','Пользовательские поля','Типы связей','Правила проверки','Форматы данных','Сценарии согласования','Группы уведомлений','Виды деятельности','Категории партнёров','Условия поставки','Сроки оплаты','Типы событий','Метки документов','Причины изменений','Типы ресурсов','Уровни доступа','Схемы маршрутизации','Шаблоны писем','Коды операций','Служебные справочники','Архивные классификаторы','Дополнительные параметры'];
+  catalog.push({id:'additional',title:'Дополнительные справочники',children:extras.map((title,index)=>({id:'extra-'+index,title,description:'Настройки и значения справочника'}))});
+  function leaves(nodes) { return nodes.flatMap(node => node.children ? leaves(node.children) : [node]); }
+  const allLeaves = leaves(catalog), allGroups = [];
+  function collectGroups(nodes) { nodes.forEach(node=>{if(node.children){allGroups.push(node.id);collectGroups(node.children);}}); }
+  collectGroups(catalog);
+  let expanded = new Set(Array.isArray(restored.expanded) ? restored.expanded.filter(id=>allGroups.includes(id)) : ['common','sales','finance','budget','products']);
+  let selected = new Set(Array.isArray(restored.selected) ? restored.selected : ['main','projects','clients']);
+  let applied = new Set(), query = '', category = 'all', isOpen = true, toastTimer;
+  let activeTree = [], currentLeaves = [], visibleLeafIds = [], rowMap = new Map(), groupMap = new Map();
+  const menu = byId('new-menu'), scroller = byId('items-scroll'), itemList = byId('menu-items');
+  const scrollbar = byId('menu-scrollbar'), scrollThumb = byId('menu-scrollbar-thumb');
+  let scrollbarFrame = 0, scrollDrag = null;
+  let scrollGeometry = {maxScroll:0,travel:0,thumbHeight:0};
+  function updateScrollbar() {
+    const viewport=scroller.clientHeight, content=scroller.scrollHeight;
+    const maxScroll=Math.max(0,content-viewport), track=Math.max(0,viewport-8);
+    const thumbHeight=Math.min(track,60);
+    const travel=Math.max(0,track-thumbHeight);
+    scrollGeometry={maxScroll,travel,thumbHeight};
+    scrollbar.hidden=!config.scroll||!isOpen||maxScroll<=1||viewport<=0;
+    if(scrollbar.hidden)return;
+    const position=Math.min(maxScroll,Math.max(0,scroller.scrollTop));
+    scrollThumb.style.height=thumbHeight+'px';
+    scrollThumb.style.transform='translateY('+(4+(travel*position/maxScroll))+'px)';
+  }
+  function requestScrollbarUpdate() {
+    if(scrollbarFrame)return;
+    scrollbarFrame=requestAnimationFrame(()=>{scrollbarFrame=0;updateScrollbar();});
+  }
+  const normalize = text => String(text).trim().toLocaleLowerCase('ru').replace(/ё/g,'е');
+  const asset = (name,extra='') => {const node=document.createElement('span');node.className='asset asset--'+name+(extra?' '+extra:'');node.setAttribute('aria-hidden','true');return node;};
+  function trimTree(nodes,allowed) { return nodes.map(node=>node.children?{...node,children:trimTree(node.children,allowed)}:node).filter(node=>node.children?node.children.length:allowed.has(node.id)); }
+  function buildData() {
+    currentLeaves = allLeaves.slice(0,config.amount);
+    const allowed = new Set(currentLeaves.map(item=>item.id));
+    selected = new Set([...selected].filter(id=>allowed.has(id)&&!currentLeaves.find(item=>item.id===id).disabled));
+    activeTree = trimTree(catalog,allowed);
+    if (!activeTree.some(node=>node.id===category)) category='all';
+    const selector=byId('menu-selector');selector.replaceChildren();
+    const option=document.createElement('option');option.value='all';option.textContent='Все разделы';selector.append(option);
+    activeTree.forEach(node=>{const o=document.createElement('option');o.value=node.id;o.textContent=node.title;selector.append(o);});selector.value=category;
+  }
+  function getView() {
+    const filter = config.control && config.controlType==='search' ? normalize(query) : '';
+    const section = config.control && config.controlType==='selector' ? category : 'all';
+    const source = section==='all'?activeTree:activeTree.filter(node=>node.id===section);
+    function visit(nodes,ancestorMatched=false) { return nodes.flatMap(node=>{
+      const own = !filter||normalize(node.title+' '+(node.description||'')).includes(filter);
+      if(node.children){const children=visit(node.children,ancestorMatched||own);return children.length?[{...node,children}]:[];}
+      return own||ancestorMatched?[node]:[];
+    }); }
+    return visit(source);
+  }
+  function isSearchMode() { return config.control&&config.controlType==='search'; }
+  function makeRow(node,depth) {
+    const group=!!node.children, searchMode=isSearchMode(), row=document.createElement('button');
+    row.type='button';row.className='menu-row';row.style.setProperty('--depth',depth);row.id='menu-row-'+node.id;row.dataset.nodeId=node.id;
+    row.setAttribute('role',group||searchMode?'menuitem':'menuitemcheckbox');
+    if(group){row.setAttribute('aria-controls','children-'+node.id);row.append(asset('chevron'));}else{if(!searchMode)row.setAttribute('aria-checked',String(selected.has(node.id)));row.disabled=!!node.disabled;}
+    row.append(asset('folder','leading-icon'));
+    const copy=document.createElement('span');copy.className='row-copy';
+    const title=document.createElement('span');title.className='row-title';title.id='label-'+node.id;title.textContent=node.title;copy.append(title);row.setAttribute('aria-labelledby',title.id);
+    if(node.description){const description=document.createElement('span');description.className='row-description';description.id='description-'+node.id;description.textContent=node.description;copy.append(description);if(config.descriptions)row.setAttribute('aria-describedby',description.id);}
+    row.append(copy);
+    if(!group&&!searchMode){row.append(asset('selection','row-check'));}
+    row.addEventListener('click',()=>{if(group){const wasOpen=row.getAttribute('aria-expanded')==='true';if(wasOpen)expanded.delete(node.id);else expanded.add(node.id);updateExpansion(node.id,!wasOpen);}else{if(selected.has(node.id))selected.delete(node.id);else selected.add(node.id);updateSelection();}});
+    rowMap.set(node.id,row);return row;
+  }
+  function updateExpansion(id,open) {
+    const entry=groupMap.get(id);if(!entry)return;
+    entry.children.hidden=!open;entry.row.setAttribute('aria-expanded',String(open));
+    requestScrollbarUpdate();
+  }
+  function renderItems(preserveScroll=true) {
+    const scrollTop=preserveScroll?scroller.scrollTop:0, focusId=document.activeElement?.dataset?.nodeId;
+    rowMap=new Map();groupMap=new Map();itemList.replaceChildren();
+    const view=getView(), matches=leaves(view);visibleLeafIds=matches.filter(item=>!item.disabled).map(item=>item.id);
+    const searching=config.control&&config.controlType==='search'&&!!normalize(query);
+    function append(nodes,parent,depth) { nodes.forEach(node=>{
+      if(node.children&&config.groups){const wrap=document.createElement('div');wrap.setAttribute('role','group');wrap.setAttribute('aria-label',node.title);const row=makeRow(node,depth);wrap.append(row);const children=document.createElement('div');children.id='children-'+node.id;children.setAttribute('role','group');children.setAttribute('aria-label',node.title);wrap.append(children);parent.append(wrap);groupMap.set(node.id,{row,children});append(node.children,children,depth+1);updateExpansion(node.id,searching||expanded.has(node.id));}
+      else if(node.children)append(node.children,parent,0);
+      else parent.append(makeRow(node,depth));
+    }); }
+    append(view,itemList,0);
+    if(!matches.length){const empty=document.createElement('div');empty.className='empty';empty.setAttribute('role','status');const title=document.createElement('strong');title.textContent='Попробуйте ещё раз';const description=document.createElement('p');description.textContent='Если ошибка повторится, обратитесь в поддержку';empty.append(title,description);itemList.append(empty);}
+    scroller.scrollTop=scrollTop;updateSelection();
+    if(focusId&&rowMap.has(focusId))rowMap.get(focusId).focus({preventScroll:true});
+    requestScrollbarUpdate();
+  }
+  function updateSelection() {
+    if(!isSearchMode())currentLeaves.forEach(item=>{const row=rowMap.get(item.id);if(row)row.setAttribute('aria-checked',String(selected.has(item.id)));});
+    byId('select-all').disabled=!visibleLeafIds.length;
+    byId('reset-all').disabled=!selected.size;
+    const available=currentLeaves.filter(item=>!item.disabled).length;
+    byId('menu-stats').textContent='Выбрано '+selected.size+' из '+available+' · '+currentLeaves.length+' пунктов';
+  }
+  function syncFieldStates() {
+    const searchFilled=byId('menu-search').value.length>0;
+    byId('search-field').classList.toggle('is-filled',searchFilled);
+    byId('clear-search').hidden=!searchFilled;
+  }
+  function syncControls() {
+    document.querySelectorAll('[data-option]').forEach(input=>{const key=input.dataset.option;if(input.type==='checkbox')input.checked=config[key];else if(input.type==='radio')input.checked=Number(input.value)===config[key];else input.value=config[key];});
+    for(const key of ['headerIcon','headerAction'])document.querySelector('[data-option="'+key+'"]').disabled=!config.header;
+    const searchMode=isSearchMode(), footerControl=document.querySelector('[data-option="footer"]');
+    footerControl.disabled=searchMode;footerControl.checked=!searchMode&&config.footer;
+    byId('footer-note').hidden=!searchMode;
+    for(const key of ['divider','selectAll','resetAll','apply'])document.querySelector('[data-option="'+key+'"]').disabled=searchMode||!config.footer;
+    document.querySelector('[data-option="controlType"]').disabled=!config.control;
+    byId('expand-all').disabled=byId('collapse-all').disabled=!config.groups;
+    byId('width-value').textContent=config.width+' px';byId('height-value').textContent=config.height+' px';
+  }
+  function applyConfig(rebuild=false) {
+    document.documentElement.style.setProperty('--menu-width',config.width+'px');
+    document.documentElement.style.setProperty('--list-height',config.height+'px');
+    byId('menu-header').hidden=!config.header;byId('header-icon').hidden=!config.headerIcon;byId('header-action').hidden=!config.headerAction;
+    byId('menu-title').textContent=config.title||'Меню';menu.setAttribute('aria-label',config.title||'Меню');
+    byId('menu-control').hidden=!config.control;byId('search-field').hidden=config.controlType!=='search';byId('selector-field').hidden=config.controlType!=='selector';
+    const hasFooter=!isSearchMode()&&config.footer&&(config.divider||config.selectAll||config.resetAll||config.apply);
+    byId('menu-footer').hidden=!hasFooter;byId('footer-divider').hidden=!config.divider;byId('footer-links').hidden=!(config.selectAll||config.resetAll);byId('select-all').hidden=!config.selectAll;byId('reset-all').hidden=!config.resetAll;byId('apply').hidden=!config.apply;
+    menu.classList.toggle('no-icons',!config.icons);menu.classList.toggle('no-descriptions',!config.descriptions);
+    byId('geometry-label').textContent=config.width+' px · список до '+config.height+' px · отступ 12 px';
+    syncControls();if(rebuild)buildData();syncFieldStates();renderItems();setOpen(true);
+  }
+  function setOpen(open,focus=false) {
+    isOpen=open;menu.hidden=!open;byId('closed-state').hidden=open;
+    byId('toggle-menu').textContent=open?'Закрыть меню':'Открыть меню';byId('toggle-menu').setAttribute('aria-expanded',String(open));
+    if(focus&&open){const target=config.control&&config.controlType==='search'?byId('menu-search'):config.control&&config.controlType==='selector'?byId('menu-selector'):visibleRows()[0];if(target)target.focus();}
+    requestScrollbarUpdate();
+  }
+  function showToast(text) { clearTimeout(toastTimer);byId('toast').textContent=text;byId('toast').hidden=false;toastTimer=setTimeout(()=>{byId('toast').hidden=true;},2600); }
+  const numericKeys=['width','height','amount'];
+  byId('settings-form').addEventListener('submit',event=>event.preventDefault());
+  document.querySelectorAll('[data-option]').forEach(input=>{input.addEventListener(input.type==='range'||input.type==='text'?'input':'change',()=>{const key=input.dataset.option;if(input.type==='radio'&&!input.checked)return;config[key]=input.type==='checkbox'?input.checked:numericKeys.includes(key)?Number(input.value):input.value;if(key==='controlType'||key==='control'){query='';byId('menu-search').value='';category='all';byId('menu-selector').value='all';}applyConfig(key==='amount');});});
+  byId('menu-search').addEventListener('input',event=>{query=event.target.value;syncFieldStates();renderItems(false);});
+  byId('menu-selector').addEventListener('change',event=>{category=event.target.value;syncFieldStates();renderItems(false);});
+  byId('clear-search').addEventListener('click',()=>{query='';byId('menu-search').value='';syncFieldStates();renderItems(false);byId('menu-search').focus();});
+  byId('select-all').addEventListener('click',()=>{visibleLeafIds.forEach(id=>selected.add(id));updateSelection();});
+  byId('reset-all').addEventListener('click',()=>{selected.clear();updateSelection();});
+  byId('apply').addEventListener('click',()=>{
+    applied=new Set(selected);byId('result').hidden=false;byId('result-title').textContent=applied.size?'Выбор применён':'Выбор сброшен';byId('result-count').textContent=applied.size+' выбрано';const tags=byId('result-tags');tags.replaceChildren();const items=currentLeaves.filter(item=>applied.has(item.id));items.slice(0,8).forEach(item=>{const tag=document.createElement('span');tag.className='result-tag';tag.textContent=item.title;tags.append(tag);});if(items.length>8){const more=document.createElement('span');more.className='result-tag';more.textContent='Ещё '+(items.length-8);tags.append(more);}tags.hidden=!items.length;showToast('Применено: '+applied.size+' '+plural(applied.size));
+  });
+  function plural(count){const mod=count%100;return mod>=11&&mod<=14?'пунктов':count%10===1?'пункт':count%10>=2&&count%10<=4?'пункта':'пунктов';}
+  byId('header-action').addEventListener('click',()=>{config.width=config.width<400?440:320;applyConfig();});
+  byId('toggle-menu').addEventListener('click',()=>setOpen(!isOpen));byId('reopen-menu').addEventListener('click',()=>setOpen(true,true));
+  byId('expand-all').addEventListener('click',()=>{expanded=new Set(allGroups);renderItems();setOpen(true);});
+  byId('collapse-all').addEventListener('click',()=>{expanded.clear();query='';byId('menu-search').value='';syncFieldStates();renderItems(false);setOpen(true);});
+  function resetSettings() {Object.assign(config,defaults);query='';category='all';byId('menu-search').value='';expanded=new Set(['common','sales','finance','budget','products']);selected=new Set(['main','projects','clients']);byId('result').hidden=true;applyConfig(true);scroller.scrollTop=0;}
+  byId('reset-settings').addEventListener('click',resetSettings);
+  document.querySelectorAll('[data-preset]').forEach(button=>button.addEventListener('click',()=>{const preset=button.dataset.preset;Object.assign(config,defaults);if(preset==='compact')Object.assign(config,{descriptions:false,header:false,footer:false,width:320,height:300});if(preset==='minimal')Object.assign(config,{header:false,control:false,footer:false,icons:false,descriptions:false,groups:false,width:320,height:360});query='';byId('menu-search').value='';category='all';applyConfig(true);}));
+  function visibleRows() {return Array.from(itemList.querySelectorAll('.menu-row')).filter(row=>!row.disabled&&row.getClientRects().length>0);}
+  itemList.addEventListener('keydown',event=>{
+    const rows=visibleRows(), index=rows.indexOf(document.activeElement);if(index<0)return;let target;
+    if(event.key==='ArrowDown')target=rows[Math.min(index+1,rows.length-1)];if(event.key==='ArrowUp')target=rows[Math.max(index-1,0)];if(event.key==='Home')target=rows[0];if(event.key==='End')target=rows[rows.length-1];
+    const id=document.activeElement.dataset.nodeId,group=groupMap.get(id);
+    if(event.key==='ArrowRight'&&group){event.preventDefault();expanded.add(id);updateExpansion(id,true);return;}
+    if(event.key==='ArrowLeft'){if(group&&group.row.getAttribute('aria-expanded')==='true'){event.preventDefault();expanded.delete(id);updateExpansion(id,false);return;}const parent=document.activeElement.parentElement?.closest('[id^="children-"]');if(parent){const parentRow=rowMap.get(parent.id.slice(9));if(parentRow){event.preventDefault();parentRow.focus();return;}}}
+    if(target){event.preventDefault();target.focus();}
+  });
+  byId('menu-search').addEventListener('keydown',event=>{if(event.key==='ArrowDown'){const first=visibleRows()[0];if(first){event.preventDefault();first.focus();}}});
+  scroller.addEventListener('keydown',event=>{if(event.target===scroller&&event.key==='ArrowDown'){const first=visibleRows()[0];if(first){event.preventDefault();first.focus();}}});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&isOpen&&menu.contains(document.activeElement)){event.preventDefault();setOpen(false);if(document.body.classList.contains('exported'))byId('reopen-menu').focus();else byId('toggle-menu').focus();}});
+  scroller.addEventListener('scroll',requestScrollbarUpdate,{passive:true});
+  scrollbar.addEventListener('pointerdown',event=>{
+    if(event.button!==0||scrollbar.hidden)return;
+    updateScrollbar();
+    const {maxScroll,travel,thumbHeight}=scrollGeometry;
+    if(travel<=0)return;
+    event.preventDefault();
+    if(!scrollThumb.contains(event.target)){
+      const y=event.clientY-scrollbar.getBoundingClientRect().top-4-thumbHeight/2;
+      scroller.scrollTop=Math.min(maxScroll,Math.max(0,y/travel*maxScroll));
+    }
+    scrollDrag={pointerId:event.pointerId,startY:event.clientY,startScroll:scroller.scrollTop,scale:maxScroll/travel};
+    scrollbar.setPointerCapture(event.pointerId);scrollbar.classList.add('is-dragging');requestScrollbarUpdate();
+  });
+  scrollbar.addEventListener('pointermove',event=>{
+    if(!scrollDrag||event.pointerId!==scrollDrag.pointerId)return;
+    scroller.scrollTop=Math.min(scrollGeometry.maxScroll,Math.max(0,scrollDrag.startScroll+(event.clientY-scrollDrag.startY)*scrollDrag.scale));
+    requestScrollbarUpdate();
+  });
+  function endScrollDrag(event) {
+    if(!scrollDrag||event.pointerId!==scrollDrag.pointerId)return;
+    const pointerId=scrollDrag.pointerId;scrollDrag=null;scrollbar.classList.remove('is-dragging');
+    if(scrollbar.hasPointerCapture(pointerId))scrollbar.releasePointerCapture(pointerId);
+  }
+  scrollbar.addEventListener('pointerup',endScrollDrag);scrollbar.addEventListener('pointercancel',endScrollDrag);scrollbar.addEventListener('lostpointercapture',endScrollDrag);
+  scrollbar.addEventListener('wheel',event=>{
+    const unit=event.deltaMode===1?18:event.deltaMode===2?scroller.clientHeight:1;
+    scroller.scrollTop+=event.deltaY*unit;event.preventDefault();requestScrollbarUpdate();
+  },{passive:false});
+  window.addEventListener('resize',requestScrollbarUpdate);
+  if(typeof ResizeObserver!=='undefined'){
+    const observer=new ResizeObserver(requestScrollbarUpdate);observer.observe(scroller);observer.observe(itemList);
+  }
+  function configurationText(){return JSON.stringify(config,null,2);}
+  byId('copy-config').addEventListener('click',async()=>{const text=configurationText();try{if(!navigator.clipboard)throw new Error('clipboard unavailable');await navigator.clipboard.writeText(text);showToast('Настройки скопированы');}catch(_){const area=document.createElement('textarea');area.value=text;area.style.cssText='position:fixed;left:-9999px';document.body.append(area);area.select();let copied=false;try{copied=document.execCommand('copy');}catch(_){}area.remove();if(copied)showToast('Настройки скопированы');else{download(new Blob([text],{type:'application/json;charset=utf-8'}),'newmenu-settings.json');showToast('Настройки сохранены в файл');}}});
+  function download(blob,name){const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=name;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);}
+  byId('download-menu').addEventListener('click',()=>{
+    const clone=document.documentElement.cloneNode(true);clone.querySelector('body').classList.add('exported');clone.querySelector('title').textContent=config.title||'NewMenu';
+    clone.querySelector('#initial-config').textContent=JSON.stringify({config,selected:[...selected],expanded:[...expanded]}).replace(/</g,'\\u003c');
+    clone.querySelector('#menu-items').replaceChildren();clone.querySelector('#toast').hidden=true;clone.querySelector('#result').hidden=true;
+    const html='<!doctype html>\n'+clone.outerHTML;
+    download(new Blob([html],{type:'text/html;charset=utf-8'}),'newmenu.html');showToast('Готово: newmenu.html');
+  });
+  buildData();applyConfig();
+})();
+</script>
+</body>
+</html>
